@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EXILED</name>
+    </assembly>
+    <members>
+        <member name="M:EXILED.Extensions.CassieExtensions.CassieMessage(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Plays a cassie message.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.CassieExtensions.DelayedCassieMessage(System.String,System.Boolean,System.Boolean,System.Single)">
+            <summary>
+            Plays a cassie message with a delay.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetPosition(ReferenceHub,UnityEngine.Vector3)">
+            <summary>
+            Sets the position of a <see cref="T:ReferenceHub"/> using a <see cref="T:UnityEngine.Vector3"/>.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetPosition(ReferenceHub,System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the position of a <see cref="T:ReferenceHub"/> using the x, y, and z of the destination position.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetRotation(ReferenceHub,UnityEngine.Vector2)">
+            <summary>
+            Sets the rotation of a <see cref="T:ReferenceHub"/> using a <see cref="T:UnityEngine.Vector2"/>.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetRotation(ReferenceHub,System.Single,System.Single)">
+            <summary>
+            Sets the rotation of a <see cref="T:ReferenceHub"/> using the x and y values of the desired rotation.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetRankColor(ReferenceHub,System.String)">
+            <summary>
+            Sets the rank color of a <see cref="T:ReferenceHub"/> to a given color with a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetRankName(ReferenceHub,System.String)">
+            <summary>
+            Sets the rank name of a <see cref="T:ReferenceHub"/> to a given <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetRole(ReferenceHub,System.String,System.String,System.Boolean)">
+            <summary>
+            Sets the rank of a <see cref="T:ReferenceHub"/> by giving a <paramref name="name"/>, <paramref name="color"/>, and setting if it should be shown with <paramref name="show"/>.
+            </summary>
+        </member>
+        <member name="M:EXILED.Extensions.PlayerExtensions.SetRole(ReferenceHub,UserGroup)">
+            <summary>
+            Sets the rank of a <see cref="T:ReferenceHub"/> to a <see cref="T:UserGroup"/>.
+            </summary>
+        </member>
+        <member name="M:EXILED.LevenshteinDistance.Compute(System.String,System.String)">
+            <summary>
+            Compute the distance between two <see cref="T:System.String"/>s.
+            </summary>
+        </member>
+    </members>
+</doc>
