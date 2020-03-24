@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using EXILED;
 using MEC;
 using EXILED.Extensions;
@@ -19,13 +21,21 @@ namespace SimpleCassie
 
 		public void OnRoundStart()
 		{
+			if (roundPlugin.autoWarheadStart && EXILED.Plugin.Config.GetBool("util_enable_autonuke", false))
+			{
+				Timing.CallDelayed(EXILED.Plugin.Config.GetInt("util_autonuke_time", 600), () =>
+				{
+					Log.Info($"autoWarheadStart: {roundPlugin.autoWarheadStart}, roundStartMsg: {roundPlugin.autoWarheadStartMsg}, roundStartDelay: {roundPlugin.autoWarheadStartDelay}, roundStartNoise: {roundPlugin.autoWarheadStartNoise}");
+					Timing.RunCoroutine(CassieMessage(roundPlugin.autoWarheadStartMsg, false, roundPlugin.autoWarheadStartNoise, roundPlugin.autoWarheadStartDelay));
+				});
+			}
+
 			if (!roundPlugin.roundStart)
 			{
 				return;
 			}
 			Log.Info($"roundStart: {roundPlugin.roundStart}, roundStartMsg: {roundPlugin.roundStartMsg}, roundStartDelay: {roundPlugin.roundStartDelay}, roundStartNoise: {roundPlugin.roundStartNoise}");
 			Timing.RunCoroutine(CassieMessage(roundPlugin.roundStartMsg, false, roundPlugin.roundStartNoise, roundPlugin.roundStartDelay));
-			Player.GetHubs().ToArray()[0].SetRotation(1, 2);
 		}
 
 		public void OnRoundEnd()
@@ -40,32 +50,32 @@ namespace SimpleCassie
 
 		public void OnWarheadStart(WarheadStartEvent ev)
 		{
-			if (!roundPlugin.roundWarheadStart)
+			if (!roundPlugin.warheadStart)
 			{
 				return;
 			}
-			Log.Info($"roundEnd: {roundPlugin.roundWarheadStart}, roundStartMsg: {roundPlugin.roundWarheadStartMsg}, roundStartDelay: {roundPlugin.roundWarheadStartNoise}, roundStartNoise: {roundPlugin.roundWarheadStartDelay}");
-			Timing.RunCoroutine(CassieMessage(roundPlugin.roundWarheadStartMsg, false, roundPlugin.roundWarheadStartNoise, roundPlugin.roundWarheadStartDelay));
+			Log.Info($"roundEnd: {roundPlugin.warheadStart}, roundStartMsg: {roundPlugin.warheadStartMsg}, roundStartDelay: {roundPlugin.warheadStartNoise}, roundStartNoise: {roundPlugin.warheadStartDelay}");
+			Timing.RunCoroutine(CassieMessage(roundPlugin.warheadStartMsg, false, roundPlugin.warheadStartNoise, roundPlugin.warheadStartDelay));
 		}
 
 		public void OnWarheadCancelled(WarheadCancelEvent ev)
 		{
-			if (!roundPlugin.roundWarheadCancelled)
+			if (!roundPlugin.warheadCancelled)
 			{
 				return;
 			}
-			Log.Info($"roundEnd: {roundPlugin.roundWarheadCancelled}, roundStartMsg: {roundPlugin.roundWarheadCancelledMsg}, roundStartDelay: {roundPlugin.roundWarheadCancelledNoise}, roundStartNoise: {roundPlugin.roundWarheadCancelledDelay}");
-			Timing.RunCoroutine(CassieMessage(roundPlugin.roundWarheadCancelledMsg, false, roundPlugin.roundWarheadCancelledNoise, roundPlugin.roundWarheadCancelledDelay));
+			Log.Info($"roundEnd: {roundPlugin.warheadCancelled}, roundStartMsg: {roundPlugin.warheadCancelledMsg}, roundStartDelay: {roundPlugin.warheadCancelledNoise}, roundStartNoise: {roundPlugin.warheadCancelledDelay}");
+			Timing.RunCoroutine(CassieMessage(roundPlugin.warheadCancelledMsg, false, roundPlugin.warheadCancelledNoise, roundPlugin.warheadCancelledDelay));
 		}
 
 		public void OnWarheadDetonation()
 		{
-			if (!roundPlugin.roundWarheadDetonation)
+			if (!roundPlugin.warheadDetonation)
 			{
 				return;
 			}
-			Log.Info($"roundEnd: {roundPlugin.roundWarheadDetonation}, roundStartMsg: {roundPlugin.roundWarheadDetonationMsg}, roundStartDelay: {roundPlugin.roundWarheadDetonationNoise}, roundStartNoise: {roundPlugin.roundWarheadDetonationDelay}");
-			Timing.RunCoroutine(CassieMessage(roundPlugin.roundWarheadDetonationMsg, false, roundPlugin.roundWarheadDetonationNoise, roundPlugin.roundWarheadDetonationDelay));
+			Log.Info($"roundEnd: {roundPlugin.warheadDetonation}, roundStartMsg: {roundPlugin.warheadDetonationMsg}, roundStartDelay: {roundPlugin.warheadDetonationNoise}, roundStartNoise: {roundPlugin.warheadDetonationDelay}");
+			Timing.RunCoroutine(CassieMessage(roundPlugin.warheadDetonationMsg, false, roundPlugin.warheadDetonationNoise, roundPlugin.warheadDetonationDelay));
 		}
 	}
 }

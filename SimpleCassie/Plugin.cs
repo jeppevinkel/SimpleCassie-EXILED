@@ -19,20 +19,25 @@ namespace SimpleCassie
 		public float roundEndDelay;
 		public bool roundEndNoise;
 
-		public bool roundWarheadStart;
-		public string roundWarheadStartMsg;
-		public float roundWarheadStartDelay;
-		public bool roundWarheadStartNoise;
+		public bool warheadStart;
+		public string warheadStartMsg;
+		public float warheadStartDelay;
+		public bool warheadStartNoise;
 
-		public bool roundWarheadCancelled;
-		public string roundWarheadCancelledMsg;
-		public float roundWarheadCancelledDelay;
-		public bool roundWarheadCancelledNoise;
+		public bool warheadCancelled;
+		public string warheadCancelledMsg;
+		public float warheadCancelledDelay;
+		public bool warheadCancelledNoise;
 
-		public bool roundWarheadDetonation;
-		public string roundWarheadDetonationMsg;
-		public float roundWarheadDetonationDelay;
-		public bool roundWarheadDetonationNoise;
+		public bool warheadDetonation;
+		public string warheadDetonationMsg;
+		public float warheadDetonationDelay;
+		public bool warheadDetonationNoise;
+
+		public bool autoWarheadStart;
+		public string autoWarheadStartMsg;
+		public float autoWarheadStartDelay;
+		public bool autoWarheadStartNoise;
 
 		public override void OnEnable()
 		{
@@ -74,20 +79,25 @@ namespace SimpleCassie
 			roundEndDelay = Config.GetFloat("simpleCassie_roundEnd_delay", 0f);
 			roundStartNoise = Config.GetBool("simpleCassie_roundEnd_noise", false);
 
-			roundWarheadStart = Config.GetBool("simpleCassie_warheadStart", false);
-			roundWarheadStartMsg = Config.GetString("simpleCassie_warheadStart_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead detonation sequence has been started pitch_0.5 .g6 .g6");
-			roundWarheadStartDelay = Config.GetFloat("simpleCassie_warheadStart_delay", 0f);
-			roundWarheadStartNoise = Config.GetBool("simpleCassie_warheadStart_noise", false);
+			warheadStart = Config.GetBool("simpleCassie_warheadStart", false);
+			warheadStartMsg = Config.GetString("simpleCassie_warheadStart_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead detonation sequence has been started pitch_0.5 .g6 .g6");
+			warheadStartDelay = Config.GetFloat("simpleCassie_warheadStart_delay", 0f);
+			warheadStartNoise = Config.GetBool("simpleCassie_warheadStart_noise", false);
 
-			roundWarheadCancelled = Config.GetBool("simpleCassie_warheadCancelled", false);
-			roundWarheadCancelledMsg = Config.GetString("simpleCassie_warheadCancelled_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead detonation sequence has been stopped pitch_0.5 .g6 .g6");
-			roundWarheadCancelledDelay = Config.GetFloat("simpleCassie_warheadCancelled_delay", 0f);
-			roundWarheadCancelledNoise = Config.GetBool("simpleCassie_warheadCancelled_noise", false);
+			warheadCancelled = Config.GetBool("simpleCassie_warheadCancelled", false);
+			warheadCancelledMsg = Config.GetString("simpleCassie_warheadCancelled_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead detonation sequence has been stopped pitch_0.5 .g6 .g6");
+			warheadCancelledDelay = Config.GetFloat("simpleCassie_warheadCancelled_delay", 0f);
+			warheadCancelledNoise = Config.GetBool("simpleCassie_warheadCancelled_noise", false);
 
-			roundWarheadDetonation = Config.GetBool("simpleCassie_warheadDetonation", false);
-			roundWarheadDetonationMsg = Config.GetString("simpleCassie_warheadDetonation_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead will detonate in tminus 5 seconds pitch_0.5 .g6 .g6");
-			roundWarheadDetonationDelay = Config.GetFloat("simpleCassie_warheadDetonation_delay", 0f);
-			roundWarheadDetonationNoise = Config.GetBool("simpleCassie_warheadDetonation_noise", false);
+			warheadDetonation = Config.GetBool("simpleCassie_warheadDetonation", false);
+			warheadDetonationMsg = Config.GetString("simpleCassie_warheadDetonation_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead will detonate in tminus 5 seconds pitch_0.5 .g6 .g6");
+			warheadDetonationDelay = Config.GetFloat("simpleCassie_warheadDetonation_delay", 0f);
+			warheadDetonationNoise = Config.GetBool("simpleCassie_warheadDetonation_noise", false);
+
+			autoWarheadStart = Config.GetBool("simpleCassie_autoWarheadStart", false);
+			autoWarheadStartMsg = Config.GetString("simpleCassie_autoWarheadStart_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead detonation sequence has been started pitch_0.5 .g6 .g6");
+			autoWarheadStartDelay = Config.GetFloat("simpleCassie_autoWarheadStart_delay", 0f);
+			autoWarheadStartNoise = Config.GetBool("simpleCassie_autoWarheadStart_noise", false);
 		}
 
 		public override void OnDisable()

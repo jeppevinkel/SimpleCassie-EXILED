@@ -20,4 +20,5 @@ roundEnd
 warheadStart
 warheadCancelled
 warheadDetonation
+autoWarheadStart
 ```
