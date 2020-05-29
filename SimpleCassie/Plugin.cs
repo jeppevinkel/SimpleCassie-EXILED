@@ -39,13 +39,26 @@ namespace SimpleCassie
 		public float autoWarheadStartDelay;
 		public bool autoWarheadStartNoise;
 
+		public bool chaosRespawn;
+		public string chaosRespawnMsg;
+		public float chaosRespawnDelay;
+		public bool chaosRespawnNoise;
+
+		public bool mtfRespawn;
+		public string mtfRespawnMsg;
+		public float mtfRespawnDelay;
+		public bool mtfRespawnNoise;
+
 		public override void OnEnable()
 		{
 			try
 			{
 				LoadConfig();
 
+				//SCassie.SaveMessages();
+
 				if (!roundEnabled) return;
+
 
 				Log.Debug("Initializing event handlers..");
 				
@@ -56,6 +69,7 @@ namespace SimpleCassie
 				Events.WarheadStartEvent += EventHandlers.OnWarheadStart;
 				Events.WarheadCancelledEvent += EventHandlers.OnWarheadCancelled;
 				Events.WarheadDetonationEvent += EventHandlers.OnWarheadDetonation;
+				Events.TeamRespawnEvent += EventHandlers.OnTeamRespawn;
 
 				Log.Info($"SimpleCassie loaded.");
 			}
@@ -98,6 +112,16 @@ namespace SimpleCassie
 			autoWarheadStartMsg = Config.GetString("simpleCassie_autoWarheadStart_message", "pitch_0.5 .g6 .g6 Pitch_0.8  the alpha warhead detonation sequence has been started pitch_0.5 .g6 .g6");
 			autoWarheadStartDelay = Config.GetFloat("simpleCassie_autoWarheadStart_delay", 0f);
 			autoWarheadStartNoise = Config.GetBool("simpleCassie_autoWarheadStart_noise", false);
+
+			chaosRespawn = Config.GetBool("simpleCassie_chaosRespawn", false);
+			chaosRespawnMsg = Config.GetString("simpleCassie_chaosRespawn_message", "pitch_0.5 .g6 .g6 Pitch_0.8  Chaos insurgency has arrived at the gate pitch_0.5 .g6 .g6");
+			chaosRespawnDelay = Config.GetFloat("simpleCassie_chaosRespawn_delay", 0f);
+			chaosRespawnNoise = Config.GetBool("simpleCassie_chaosRespawn_noise", false);
+
+			mtfRespawn = Config.GetBool("simpleCassie_mtfRespawn", false);
+			mtfRespawnMsg = Config.GetString("simpleCassie_mtfRespawn_message", "pitch_0.5 .g6 .g6 Pitch_0.8  M T F has arrived at the facility pitch_0.5 .g6 .g6");
+			mtfRespawnDelay = Config.GetFloat("simpleCassie_mtfRespawn_delay", 0f);
+			mtfRespawnNoise = Config.GetBool("simpleCassie_mtfRespawn_noise", false);
 		}
 
 		public override void OnDisable()
@@ -107,6 +131,7 @@ namespace SimpleCassie
 			Events.WarheadStartEvent -= EventHandlers.OnWarheadStart;
 			Events.WarheadCancelledEvent -= EventHandlers.OnWarheadCancelled;
 			Events.WarheadDetonationEvent -= EventHandlers.OnWarheadDetonation;
+			Events.TeamRespawnEvent -= EventHandlers.OnTeamRespawn;
 
 			EventHandlers = null;
 		}

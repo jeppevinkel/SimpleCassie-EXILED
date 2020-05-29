@@ -21,4 +21,6 @@ warheadStart
 warheadCancelled
 warheadDetonation
 autoWarheadStart
+chaosRespawn
+mtfRespawn
 ```

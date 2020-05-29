@@ -25,3 +25,5 @@ D:\jeppe\Documents\Visual Studio Projects\SimpleCassie-EXILED\SimpleCassie\obj\R
 D:\jeppe\Documents\Visual Studio Projects\SimpleCassie-EXILED\SimpleCassie\obj\Release\SimpleCassie.csproj.CopyComplete
 D:\jeppe\Documents\Visual Studio Projects\SimpleCassie-EXILED\SimpleCassie\obj\Release\SimpleCassie.dll
 D:\jeppe\Documents\Visual Studio Projects\SimpleCassie-EXILED\SimpleCassie\obj\Release\SimpleCassie.pdb
+D:\jeppe\Documents\Visual Studio Projects\SimpleCassie-EXILED\SimpleCassie\bin\Release\Newtonsoft.Json.dll
+D:\jeppe\Documents\Visual Studio Projects\SimpleCassie-EXILED\SimpleCassie\bin\Release\UnityEngine.PhysicsModule.dll

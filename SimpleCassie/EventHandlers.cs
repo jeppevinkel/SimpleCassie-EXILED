@@ -21,6 +21,16 @@ namespace SimpleCassie
 
 		public void OnRoundStart()
 		{
+			//foreach (ReferenceHub hub in Player.GetHubs().Where(rh => rh.GetTeam() == Team.SCP))
+			//{
+			//	hub.GetComponent<MTFRespawn>().CallRpcPlayCustomAnnouncement("You are an SCP", true, true);
+			//}
+
+			//foreach (ReferenceHub hub in Player.GetHubs().Where(rh => rh.GetTeam() == Team.CDP))
+			//{
+			//	hub.GetComponent<MTFRespawn>().CallRpcPlayCustomAnnouncement("You are a CLASSD", true, true);
+			//}
+
 			if (roundPlugin.autoWarheadStart && EXILED.Plugin.Config.GetBool("util_enable_autonuke", false))
 			{
 				Timing.CallDelayed(EXILED.Plugin.Config.GetInt("util_autonuke_time", 600), () =>
@@ -36,6 +46,20 @@ namespace SimpleCassie
 			}
 			Log.Info($"roundStart: {roundPlugin.roundStart}, roundStartMsg: {roundPlugin.roundStartMsg}, roundStartDelay: {roundPlugin.roundStartDelay}, roundStartNoise: {roundPlugin.roundStartNoise}");
 			Timing.RunCoroutine(CassieMessage(roundPlugin.roundStartMsg, false, roundPlugin.roundStartNoise, roundPlugin.roundStartDelay));
+		}
+
+		internal void OnTeamRespawn(ref TeamRespawnEvent ev)
+		{
+			if (roundPlugin.chaosRespawn && ev.IsChaos)
+			{
+				Log.Info($"chaosRespawn: {roundPlugin.chaosRespawn}, chaosRespawnMsg: {roundPlugin.chaosRespawnMsg}, chaosRespawnDelay: {roundPlugin.chaosRespawnDelay}, chaosRespawnNoise: {roundPlugin.chaosRespawnNoise}");
+				Timing.RunCoroutine(CassieMessage(roundPlugin.chaosRespawnMsg, false, roundPlugin.chaosRespawnNoise, roundPlugin.chaosRespawnDelay));
+			}
+			else if (roundPlugin.mtfRespawn && !ev.IsChaos)
+			{
+				Log.Info($"mtfRespawn: {roundPlugin.mtfRespawn}, mtfRespawnMsg: {roundPlugin.mtfRespawnMsg}, mtfRespawnDelay: {roundPlugin.mtfRespawnDelay}, mtfRespawnNoise: {roundPlugin.mtfRespawnNoise}");
+				Timing.RunCoroutine(CassieMessage(roundPlugin.mtfRespawnMsg, false, roundPlugin.mtfRespawnNoise, roundPlugin.mtfRespawnDelay));
+			}
 		}
 
 		public void OnRoundEnd()
