@@ -12,7 +12,7 @@ namespace SimpleCassie
 		private Handlers.Warhead warhead;
 
 		private static readonly Lazy<SimpleCassie> LazyInstance = new Lazy<SimpleCassie>(() => new SimpleCassie());
-		public static SimpleCassie Instance = LazyInstance.Value;
+		public static SimpleCassie Instance => LazyInstance.Value;
 
 		private SimpleCassie()
 		{

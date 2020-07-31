@@ -11,11 +11,11 @@ namespace SimpleCassie.Handlers
 		{
 			if (ev.IsAllowed)
 			{
-				Dictionary<string, object> settings = SimpleCassie.Instance.Config.WarheadStart;
+				AnnouncementSettings settings = SimpleCassie.Instance.Config.WarheadStart;
 				Log.Info(
-					$"RoundStart: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-				Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool) settings["MakeNoise"],
-					(float) settings["Delay"]));
+					$"RoundStart: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+				Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, settings.MakeNoise,
+					settings.Delay));
 			}
 		}
 
@@ -23,21 +23,21 @@ namespace SimpleCassie.Handlers
 		{
 			if (ev.IsAllowed)
 			{
-				Dictionary<string, object> settings = SimpleCassie.Instance.Config.WarheadStop;
+				AnnouncementSettings settings = SimpleCassie.Instance.Config.WarheadStop;
 				Log.Info(
-					$"RoundStart: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-				Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool)settings["MakeNoise"],
-					(float)settings["Delay"]));
+					$"RoundStart: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+				Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, (bool)settings.MakeNoise,
+					(float)settings.Delay));
 			}
 		}
 
 		internal void OnDetonated()
 		{
-			Dictionary<string, object> settings = SimpleCassie.Instance.Config.WarheadDetonation;
+			AnnouncementSettings settings = SimpleCassie.Instance.Config.WarheadDetonation;
 			Log.Info(
-				$"RoundStart: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-			Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool) settings["MakeNoise"],
-				(float) settings["Delay"]));
+				$"RoundStart: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+			Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, settings.MakeNoise,
+				settings.Delay));
 		}
 	}
 }

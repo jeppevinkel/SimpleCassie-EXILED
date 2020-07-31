@@ -10,39 +10,39 @@ namespace SimpleCassie.Handlers
 	{
 		public void OnRoundStarted()
 		{
-			Dictionary<string, object> settings = SimpleCassie.Instance.Config.RoundStart;
+			AnnouncementSettings settings = SimpleCassie.Instance.Config.RoundStart;
 			Log.Info(
-				$"RoundStart: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-			Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool) settings["MakeNoise"],
-				(float) settings["Delay"]));
+				$"RoundStart: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+			Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, settings.MakeNoise,
+				settings.Delay));
 		}
 
 		public void OnRoundEnded(RoundEndedEventArgs ev)
 		{
-			Dictionary<string, object> settings = SimpleCassie.Instance.Config.RoundEnd;
+			AnnouncementSettings settings = SimpleCassie.Instance.Config.RoundEnd;
 			Log.Info(
-				$"RoundStart: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-			Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool) settings["MakeNoise"],
-				(float) settings["Delay"]));
+				$"RoundStart: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+			Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, settings.MakeNoise,
+				settings.Delay));
 		}
 
 		public void OnRespawningTeam(RespawningTeamEventArgs ev)
 		{
 			if (ev.NextKnownTeam == SpawnableTeamType.ChaosInsurgency)
 			{
-				Dictionary<string, object> settings = SimpleCassie.Instance.Config.ChaosRespawn;
+				AnnouncementSettings settings = SimpleCassie.Instance.Config.ChaosRespawn;
 				Log.Info(
-					$"ChaosRespawn: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-				Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool) settings["MakeNoise"],
-					(float) settings["Delay"]));
+					$"ChaosRespawn: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+				Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, settings.MakeNoise,
+					settings.Delay));
 			}
 			else if (ev.NextKnownTeam == SpawnableTeamType.NineTailedFox)
 			{
-				Dictionary<string, object> settings = SimpleCassie.Instance.Config.MtfRespawn;
+				AnnouncementSettings settings = SimpleCassie.Instance.Config.MtfRespawn;
 				Log.Info(
-					$"MtfRespawn: {settings["Enabled"]}, roundStartMsg: {settings["Message"]}, roundStartDelay: {settings["Delay"]}, roundStartNoise: {settings["MakeNoise"]}");
-				Timing.RunCoroutine(Extensions.CassieMessage(settings["Message"], false, (bool) settings["MakeNoise"],
-					(float) settings["Delay"]));
+					$"MtfRespawn: {settings.Enabled}, roundStartMsg: {settings.Message}, roundStartDelay: {settings.Delay}, roundStartNoise: {settings.MakeNoise}");
+				Timing.RunCoroutine(Extensions.CassieMessage(settings.Message, false, settings.MakeNoise,
+					settings.Delay));
 			}
 		}
 	}
